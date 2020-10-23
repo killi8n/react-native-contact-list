@@ -1,0 +1,6 @@
+rootProject.name = 'ContactListExample'
+apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
+include ':app'
+
+include ':reactnativecontactlist'
+project(':reactnativecontactlist').projectDir = new File(rootProject.projectDir, '../../android')

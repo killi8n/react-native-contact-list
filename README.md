@@ -23,6 +23,7 @@ npm install react-native-contact-list
 <string>연락처를 쓰겠습니다.</string>
 ```
 
+## Example
 ```jsx
 import ContactList, { Contact } from "react-native-contact-list";
 

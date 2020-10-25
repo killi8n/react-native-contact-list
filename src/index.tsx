@@ -1,7 +1,17 @@
 import { NativeModules } from 'react-native';
 
+export interface Contact {
+  displayName: string;
+  givenName?: string;
+  familyName?: string;
+  phoneNumber: string;
+  thumbnailPath?: string;
+}
+
 type ContactListType = {
-  multiply(a: number, b: number): Promise<number>;
+  checkPermission: () => Promise<'authorized' | 'denied'>;
+  requestPermission: () => Promise<'authorized' | 'denied'>;
+  getContactList: () => Promise<Contact[]>;
 };
 
 const { ContactList } = NativeModules;

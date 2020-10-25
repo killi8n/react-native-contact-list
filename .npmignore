@@ -1,0 +1,11 @@
+.circleci/
+node_modules/
+.vscode/
+example/
+.editorconfig
+.gitattributes
+.gitignore
+babel.config.js
+README.md
+tsconfig.json
+yarn.lock

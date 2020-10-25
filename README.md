@@ -10,12 +10,49 @@ npm install react-native-contact-list
 
 ## Usage
 
-```js
-import ContactList from "react-native-contact-list";
+## Android
+`AndroidManifest.xml`
+```xml
+<uses-permission android:name="android.permission.READ_CONTACTS" />
+```
+
+## iOS
+`Info.plist`
+```xml
+<key>NSContactsUsageDescription</key>
+<string>연락처를 쓰겠습니다.</string>
+```
+
+```jsx
+import ContactList, { Contact } from "react-native-contact-list";
 
 // ...
 
-const result = await ContactList.multiply(3, 7);
+function App() {
+    const [contactList, setContactList] = React.useState<Contact[]>([]);
+    const getContactList = async () => {
+        try {
+        const isPermissionAuthorized = await ContactList.checkPermission();
+        if (isPermissionAuthorized === 'authorized') {
+            setContactList(await ContactList.getContactList());
+        } else {
+            const permissionResult = await ContactList.requestPermission();
+            if (permissionResult === 'authorized') {
+            setContactList(await ContactList.getContactList());
+            } else {
+            // todo: PERMISSION DENIED EXCEPTION
+            console.log('todo: PERMISSION DENIED EXCEPTION');
+            }
+        }
+        } catch (e) {
+        console.error();
+        }
+    };
+    ...
+    render() {
+        ...
+    }
+}
 ```
 
 ## Contributing

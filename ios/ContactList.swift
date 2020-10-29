@@ -62,13 +62,13 @@ class ContactList: NSObject {
             let request = CNContactFetchRequest(keysToFetch: self.keys)
             
             do {
+                if self.contactList.count > 0 {
+                    self.contactList = []
+                }
                 try self.contactStore.enumerateContacts(with: request, usingBlock: { (contact: CNContact, _: UnsafeMutablePointer<ObjCBool>) in
                     var filePath: String? = nil
                     if contact.imageDataAvailable {
                         filePath = self.createFileWithRecordId(recordId: contact.identifier, imageData: contact.thumbnailImageData)
-                    }
-                    if self.contactList.count > 0 {
-                        self.contactList = []
                     }
                     self.contactList.append([
                         "displayName": "\(contact.familyName)\(contact.givenName)",

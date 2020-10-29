@@ -8,5 +8,8 @@ RCT_EXTERN_METHOD(checkPermission: (RCTPromiseResolveBlock)resolve rejecter: (RC
 
 RCT_EXTERN_METHOD(requestPermission: (RCTPromiseResolveBlock)resolve rejecter: (RCTPromiseRejectBlock)reject)
 
++ (BOOL)requiresMainQueueSetup {
+    return YES;
+}
 
 @end

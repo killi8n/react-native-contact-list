@@ -1,6 +1,6 @@
 {
   "name": "react-native-contact-list",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "get contact list from user device",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",

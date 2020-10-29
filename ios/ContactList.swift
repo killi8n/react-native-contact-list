@@ -67,6 +67,9 @@ class ContactList: NSObject {
                     if contact.imageDataAvailable {
                         filePath = self.createFileWithRecordId(recordId: contact.identifier, imageData: contact.thumbnailImageData)
                     }
+                    if self.contactList.count > 0 {
+                        self.contactList = []
+                    }
                     self.contactList.append([
                         "displayName": "\(contact.familyName)\(contact.givenName)",
                         "givenName": contact.givenName,
